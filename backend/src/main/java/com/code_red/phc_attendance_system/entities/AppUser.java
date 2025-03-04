@@ -1,5 +1,6 @@
 package com.code_red.phc_attendance_system.entities;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
@@ -40,12 +41,17 @@ public class AppUser {
 	    )
 	    private Set<Role> roles;
 	    
+	  
 	    public AppUser() {}
-	    
-	    public AppUser(Long id, String email, String password) {
-		  this.userId = id;
-		  this.email = email;
-		  this.password = password;
-	  }
+
+	    public AppUser(Long id, String email, String password, Set<Role> role, Facility facility) {
+	        this.userId = id;
+	        this.email = email;
+	        this.password = password;
+	        this.roles = role;  // ✅ Initialize Set
+	        
+	        this.facility = facility;
+	    }
+
 	   
 }

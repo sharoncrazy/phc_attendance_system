@@ -20,6 +20,6 @@ public class RegionController {
 	
 	@PostMapping("/validate")
 	public ResponseEntity<GPSResponseDTO> verifyGPSWithinRegion(@RequestBody LocationDTO locationDTO){
-		return new ResponseEntity<>(new GPSResponseDTO(regionService.findRegionByCoordinates(locationDTO.getLatitude(), locationDTO.getLongitude())), HttpStatus.OK);
+		return new ResponseEntity<>(new GPSResponseDTO(regionService.sendAlertIfOutsideRegion(locationDTO.getLatitude(), locationDTO.getLongitude())), HttpStatus.OK);
 	}
 }

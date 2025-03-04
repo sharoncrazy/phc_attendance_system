@@ -17,7 +17,16 @@ public class FacilityService {
 		return facilityRepository.findAll();
 	}
 	
+	public List<String> getAllBlocks(){
+		return facilityRepository.findAllBlocks();
+	}
 	public List<Facility> findByBlock(String block){
 		return facilityRepository.findByBlock(block);
+	}
+
+	public List<List<Facility>> getFacilitiesByBlocks() {
+
+//		return factoryRepository.findFacilitiesByBlocks();
+		return null;
 	}
 }
