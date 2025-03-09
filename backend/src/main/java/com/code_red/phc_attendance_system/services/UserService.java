@@ -34,7 +34,6 @@ public class UserService {
 	}
 	
 	public Optional<AppUser> findDHO(Facility facility){
-		Optional<AppUser> dho = userRepository.findByFacilityAndRole(facility, "DHO");
-		return dho;
+		return userRepository.findByFacilityAndRole(facility, "DHO");
 	}
 }

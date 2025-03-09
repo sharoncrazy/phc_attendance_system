@@ -52,11 +52,10 @@ public class RegionService {
             if (doctorOpt.isEmpty()) return status;
 
             Doctor doctor = doctorOpt.get();
-//            userService.findDHO(doctor.getFacility()).ifPresent(dho -> {
-//                logger.info("Sending alert email to DHO: {}", dho.getEmail());
-//                emailService.sendAlert(doctor.getDoctorId(), doctor.getFullName(), dho.getEmail());
-//            });
-            
+            userService.findDHO(doctor.getFacility()).ifPresent(dho -> {
+                emailService.sendAlert(doctor.getDoctorId(), doctor.getFullName(), dho.getEmail());
+            	System.out.println(dho.getEmail());
+            });            
         }
     	return status;
     }
