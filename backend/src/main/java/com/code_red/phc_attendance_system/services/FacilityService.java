@@ -1,6 +1,8 @@
 package com.code_red.phc_attendance_system.services;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,9 +26,14 @@ public class FacilityService {
 		return facilityRepository.findByBlock(block);
 	}
 
-	public List<List<Facility>> getFacilitiesByBlocks() {
+	public Map<String, List<Facility>> getFacilitiesByBlocks() {
+		List<String> allBlocks = getAllBlocks();
+		Map<String, List<Facility>> facilitiesByBlocks = new HashMap<>();
+		for(String block:allBlocks) {
+			facilitiesByBlocks.put(block, facilityRepository.findFacilitiesByBlock(block));
+			
+		}
 
-//		return factoryRepository.findFacilitiesByBlocks();
-		return null;
+		return facilitiesByBlocks;
 	}
 }

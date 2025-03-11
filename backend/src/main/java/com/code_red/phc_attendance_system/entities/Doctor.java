@@ -43,7 +43,8 @@ public class Doctor {
 	        inverseJoinColumns = @JoinColumn(name = "role_id")
 	    )
 	    private Set<Role> roles;
-	    @OneToOne
+	    
+	    @OneToOne(cascade = CascadeType.ALL , orphanRemoval = true)
 	    private Shift shift;
 	    public Doctor() { }
 }

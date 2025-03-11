@@ -1,9 +1,14 @@
 package com.code_red.phc_attendance_system.entities;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalTime;
 
+import com.code_red.phc_attendance_system.enums.ShiftStatus;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -22,7 +27,7 @@ public class Shift {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Date date;
+	private LocalDate date;
 	private LocalTime startTime;
 	private LocalTime endTime;
 	@ManyToOne
@@ -32,5 +37,6 @@ public class Shift {
 	@JoinColumn(name = "approved_by")
 	private AppUser approvedBy;
 	
-	private String status;
+	@Enumerated(EnumType.STRING)
+	private ShiftStatus status;
 }
