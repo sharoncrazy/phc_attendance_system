@@ -19,9 +19,9 @@ export default function Login() {
         });
 
     // Store the Token and Role in LocalStorage
-    localStorage.setItem('token', response.token);
-    localStorage.setItem('role', response.role);
-
+    localStorage.setItem('token', response.data.token);
+    localStorage.setItem('role', response.data.role);
+    console.log(response);
     // Redirect Based on Role
     if (response.role === 'ADMIN') {
       navigate('/admin');

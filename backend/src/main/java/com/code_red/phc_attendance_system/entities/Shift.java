@@ -1,6 +1,5 @@
 package com.code_red.phc_attendance_system.entities;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalTime;
 

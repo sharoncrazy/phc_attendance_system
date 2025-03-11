@@ -71,7 +71,7 @@ public class LoginController {
 		                .collect(Collectors.toList());
 		        
 		        final String token = jwtUtil.generateToken(userDetails, roles);
-		        return ResponseEntity.ok(new AuthResponseDTO(token, roleNames));
+		        return ResponseEntity.ok(new AuthResponseDTO(token, roleNames.get(0)));
 	        } catch (BadCredentialsException e) {
 	            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
 	        }

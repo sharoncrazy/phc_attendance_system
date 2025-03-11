@@ -1,6 +1,5 @@
 package com.code_red.phc_attendance_system.entities;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
