@@ -51,9 +51,8 @@ public class RegionService {
             if (doctorOpt.isEmpty()) return status;
 
             Doctor doctor = doctorOpt.get();
-            userService.findDHO(doctor.getFacility()).ifPresent(dho -> {
-                emailService.sendAlert(doctor.getDoctorId(), doctor.getFullName(), dho.getEmail());
-            	System.out.println(dho.getEmail());
+            userService.findDHO(doctor.getFacility().getDistrict()).ifPresent(dho -> {
+                emailService.sendAlert(doctor.getDoctorId(), doctor.getFullName(), dho.getEmail(), doctor.getFacility());            	System.out.println(dho.getEmail());
             });            
         }
     	return status;

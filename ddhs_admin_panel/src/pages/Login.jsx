@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { login } from "../services/AuthService";
 import axios from 'axios'
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -9,18 +10,15 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Dummy API Call (Replace it with Axios or Fetch)
-
     try {
         // ✅ API Call to Spring Boot Backend
-        const response = await axios.post('http://localhost:8080/login', {
-          email: email,
-          password: password
-        });
+        const response = await login(email, password);
 
+        console.log(response);
     // Store the Token and Role in LocalStorage
-    localStorage.setItem('token', response.data.token);
-    localStorage.setItem('role', response.data.role);
+    localStorage.setItem('token', response.token);
+    localStorage.setItem('role', response.role);
+    localStorage.setItem('id', response.id);
     console.log(response);
     // Redirect Based on Role
     if (response.role === 'ADMIN') {

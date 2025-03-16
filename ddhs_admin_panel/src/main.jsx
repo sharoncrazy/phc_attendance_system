@@ -6,6 +6,7 @@ import Admin from './pages/Admin';
 import Bmo from './pages/Bmo';
 import Dho from './pages/Dho';
 import NotFound from './pages/NotFound';
+import RegisterUser from './pages/UserRegistrationForm'
 
 const getRole = () => {
   return localStorage.getItem('role');
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: '/dho',
     element: getRole() === 'DHO' ? <Dho /> : <Navigate to="/login" />,
+  },
+  {
+    path: '/register',
+    element: <RegisterUser />
   },
   {
     path: '*',
