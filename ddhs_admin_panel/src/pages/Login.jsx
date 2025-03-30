@@ -25,7 +25,13 @@ export default function Login() {
       navigate('/admin');
     } else if (response.role === 'DOCTOR') {
       navigate('/doctor');
-    } else {
+    }  else if (response.role === 'DHO') {
+      navigate('/blocks');
+    }  else if (response.role === 'BMO') {
+      navigate('/bmo');
+    }
+
+     else {
       navigate('/');
     }
     } catch (error) {

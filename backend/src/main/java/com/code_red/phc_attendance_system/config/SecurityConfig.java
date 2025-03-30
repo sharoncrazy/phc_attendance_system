@@ -1,5 +1,7 @@
 package com.code_red.phc_attendance_system.config;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,6 +37,14 @@ public class SecurityConfig {
 	    @Bean
 	    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 	        return http
+	        		.cors(cors -> cors.configurationSource(request -> {
+	                    var corsConfig = new org.springframework.web.cors.CorsConfiguration();
+	                    corsConfig.setAllowedOrigins(List.of("http://localhost:5173")); // Allow frontend
+	                    corsConfig.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+	                    corsConfig.setAllowedHeaders(List.of("*"));
+	                    corsConfig.setAllowCredentials(true);
+	                    return corsConfig;
+	                }))
 	                .csrf(csrf -> csrf.disable())
 	                .authorizeHttpRequests(auth -> 
 	                			auth	

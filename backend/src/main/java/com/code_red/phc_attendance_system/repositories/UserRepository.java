@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import com.code_red.phc_attendance_system.entities.AppUser;
-import com.code_red.phc_attendance_system.entities.Facility;
+
 
 @Repository
 public interface UserRepository extends JpaRepository<AppUser, Long>{

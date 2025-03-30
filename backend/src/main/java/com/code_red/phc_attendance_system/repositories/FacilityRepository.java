@@ -1,6 +1,7 @@
 package com.code_red.phc_attendance_system.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -19,4 +20,6 @@ public interface FacilityRepository extends JpaRepository<Facility, Long> {
 	
     @Query("SELECT f FROM Facility f WHERE f.block = :block")
     List<Facility> findFacilitiesByBlock(@Param("block") String block);
+
+    Optional<Facility> findById(Long id);
 }

@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import lombok.Data;
-import java.util.Set;
 
 @Data
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "userType")

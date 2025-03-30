@@ -1,10 +1,10 @@
 import axios from "axios";
-
+import axiosInstance from "./axiosInstance";
 const API_URL = "http://localhost:8080/users";
 
 export const registerUser = async (userData) => {
   try {
-    const response = await axios.post(API_URL +"/register", userData, {
+    const response = await axiosInstance.post(API_URL +"/register", userData, {
       headers: {
         "Content-Type": "application/json",
       },

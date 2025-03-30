@@ -14,12 +14,8 @@ import com.code_red.phc_attendance_system.dto.UserDTO;
 import com.code_red.phc_attendance_system.entities.AppUser;
 import com.code_red.phc_attendance_system.entities.Bmo;
 import com.code_red.phc_attendance_system.entities.Dho;
-import com.code_red.phc_attendance_system.entities.Facility;
 import com.code_red.phc_attendance_system.entities.Role;
 import com.code_red.phc_attendance_system.repositories.UserRepository;
-
-import io.jsonwebtoken.lang.Collections;
-
 @Service
 public class UserService {
 	
