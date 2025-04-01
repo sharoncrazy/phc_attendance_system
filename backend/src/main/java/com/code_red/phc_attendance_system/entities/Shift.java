@@ -16,10 +16,12 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "shifts")
 public class Shift {
 	
@@ -38,4 +40,5 @@ public class Shift {
 	
 	@Enumerated(EnumType.STRING)
 	private ShiftStatus status;
+
 }

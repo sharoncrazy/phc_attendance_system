@@ -15,25 +15,22 @@ export default function Login() {
         const response = await login(email, password);
 
         console.log(response);
-    // Store the Token and Role in LocalStorage
-    localStorage.setItem('token', response.token);
-    localStorage.setItem('role', response.role);
-    localStorage.setItem('id', response.id);
-    console.log(response);
-    // Redirect Based on Role
-    if (response.role === 'ADMIN') {
-      navigate('/admin');
-    } else if (response.role === 'DOCTOR') {
-      navigate('/doctor');
-    }  else if (response.role === 'DHO') {
-      navigate('/blocks');
-    }  else if (response.role === 'BMO') {
-      navigate('/bmo');
-    }
-
-     else {
-      navigate('/');
-    }
+        // Store the Token and Role in LocalStorage
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('role', response.role);
+        localStorage.setItem('id', response.id);
+        console.log(response);
+        // Redirect Based on Role
+        if (response.role === 'ADMIN') {
+          navigate('/admin');
+        } else if (response.role === 'DHO') {
+          navigate('/blocks');
+        }  else if (response.role === 'BMO') {
+          await fetchBmoDetails(response.id);
+          navigate('/bmo');
+        } else {
+          navigate('/');
+        }
     } catch (error) {
       // ✅ Handle Login Failure
       if (error.response && error.response.status === 401) {
@@ -43,6 +40,19 @@ export default function Login() {
       }
     }
   };
+
+// ✅ Function to Fetch BMO Details
+  const fetchBmoDetails = async (bmoId) => {
+    try {
+      const token = localStorage.getItem('token'); // Retrieve token for authentication
+      const res = await axiosInstance.get(`/api/users/${bmoId}`);
+      console.log('BMO Details:', res.data);
+      navigate(`/${res.data.blockName}/facilities`)
+      localStorage.setItem('bmoDetails', JSON.stringify(res.data));
+    } catch (error) {
+      console.error('Error fetching BMO details:', error);
+    }
+  };  
 
   return (
     <div>

@@ -3,6 +3,8 @@ package com.code_red.phc_attendance_system.entities;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import com.code_red.phc_attendance_system.enums.AttendanceStatus;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,9 +14,11 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "attendance")
 public class Attendance {
@@ -29,5 +33,5 @@ public class Attendance {
 	
 	private LocalTime checkOutTime;
 	private LocalDate date;
-	private String status;
+	private AttendanceStatus status;
 }

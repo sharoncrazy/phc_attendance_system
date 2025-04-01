@@ -8,6 +8,7 @@ import Dho from "./pages/Dho";
 import Blocks from "./pages/Blocks";
 import NotFound from "./pages/NotFound";
 import FacilityList from "./pages/FacilityList";
+import DoctorList from "./pages/DoctorList";
 import RegisterUser from "./pages/UserRegistrationForm";
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
   {
     path:"/:blockName/facilities",
     element: <FacilityList />
+  },
+  {
+    path:"/:facilityId/doctors",
+    element:<DoctorList />
   },
   {
     path: "/dho",

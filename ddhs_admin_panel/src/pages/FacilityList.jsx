@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import axiosInstance from "../services/axiosInstance"; // Axios instance with JWT token
+import { useParams, Link } from "react-router-dom";
+import axiosInstance from "../services/axiosInstance"; // ✅ Axios instance with JWT token
 
 const FacilityList = () => {
-  const { blockName } = useParams(); // ✅ Get block name from URL
+  const { blockName } = useParams();
   const [facilities, setFacilities] = useState([]);
-  const [loading, setLoading] = useState(true); // ✅ Loading state
-  const [error, setError] = useState(null); // ✅ Error state
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchFacilities = async () => {
       try {
         const response = await axiosInstance.get(`/api/facilities/${blockName}/facilities`);
         setFacilities(response.data);
+        console.log(response.data);
       } catch (err) {
         console.error("Error fetching facilities:", err);
         setError("Failed to fetch facilities");
@@ -34,9 +35,15 @@ const FacilityList = () => {
         <p className="text-red-500">{error}</p>
       ) : facilities.length > 0 ? (
         <ul className="bg-gray-100 p-4 rounded-lg shadow-md">
-          {facilities.map((facility, index) => (
-            <li key={index} className="py-2 border-b last:border-none">
-              {facility.name}
+         {facilities.map((facility) => (
+            <li key={facility.id} className="py-2 border-b last:border-none">
+             
+              <Link
+                to={`/${facility.id}/doctors`}
+                className="text-blue-600 hover:underline"
+              >
+                {facility.name}
+              </Link>
             </li>
           ))}
         </ul>
